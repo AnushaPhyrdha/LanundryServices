@@ -21,7 +21,7 @@ function Header() {
             <Nav.Link href="#deets">Home</Nav.Link>
             <Nav.Link href="#features">Pricing</Nav.Link>
             <Nav.Link href="#features">Career</Nav.Link>
-            <Nav.Link href="#features">
+            <Nav.Link href="/">
               <p class="signinlink">Sign In</p>
             </Nav.Link>
           </Nav>

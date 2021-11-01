@@ -1,16 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./registercard.css";
 import { useHistory } from "react-router-dom";
 
 function Registercard() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [state, setState] = useState("");
+  const [district, setDistrict] = useState("");
+  const [address, setAddress] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [password, setPassword] = useState("");
   const history = useHistory();
+
   function signinsub() {
-    console.log("Hello");
     history.push("/");
   }
   function createRegister() {
-    console.log("Hello");
-    history.push("/createorder");
+    axios
+      .post("http://localhost:5000/register", {
+        name: name,
+        email: email,
+        phone: phone,
+        state: state,
+        district: district,
+        address: address,
+        pincode: pincode,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    history.push("/");
   }
 
   return (
@@ -35,7 +60,8 @@ function Registercard() {
                       type="text"
                       class="inputform form-control"
                       placeholder="Name"
-                      name="email"
+                      name="name"
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -45,7 +71,8 @@ function Registercard() {
                       type="email"
                       class="inputform form-control"
                       placeholder="Email"
-                      name="pwd"
+                      name="email"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                 </div>
@@ -55,18 +82,20 @@ function Registercard() {
                       type="text"
                       class="inputform form-control"
                       placeholder="Phone"
-                      name="email"
+                      name="phone"
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12">
                   <div class="form-group">
                     <input
-                      type="password"
+                      type="text"
                       class="inputform form-control"
                       id="pwd"
                       placeholder="State"
-                      name="pwd"
+                      name="state"
+                      onChange={(e) => setState(e.target.value)}
                     />
                   </div>
                 </div>
@@ -76,7 +105,8 @@ function Registercard() {
                       type="text"
                       class="inputform form-control"
                       placeholder="District"
-                      name="email"
+                      name="district"
+                      onChange={(e) => setDistrict(e.target.value)}
                     />
                   </div>
                 </div>
@@ -87,6 +117,7 @@ function Registercard() {
                       class="inputform form-control"
                       placeholder="Address"
                       name="pwd"
+                      onChange={(e) => setAddress(e.target.value)}
                     />
                   </div>
                 </div>
@@ -96,7 +127,8 @@ function Registercard() {
                       type="text"
                       class="inputform form-control"
                       placeholder="Pincode"
-                      name="email"
+                      name="pincode"
+                      onChange={(e) => setPincode(e.target.value)}
                     />
                   </div>
                 </div>
@@ -107,6 +139,7 @@ function Registercard() {
                       class="inputform form-control"
                       placeholder="Password"
                       name="pwd"
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
                 </div>
