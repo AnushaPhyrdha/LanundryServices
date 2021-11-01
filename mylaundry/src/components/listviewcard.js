@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Listviewcard() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }
 
-export default Listviewcard
+export default Listviewcard;

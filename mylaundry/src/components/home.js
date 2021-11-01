@@ -1,21 +1,21 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './footer'
-import Referal from './referal'
-import Footermain from './footermain'
-import Header from './header'
-import Mainhome from './mainhome'
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "./footer";
+import Referal from "./referal";
+import Footermain from "./footermain";
+import Header from "./header";
+import Signin from "./signin";
 
 function home() {
-    return (
-        <div>
-            <Header />
-            <Mainhome />
-            <Referal />
-            <Footermain />
-            <Footer />
-        </div>
-    )
+  return (
+    <div>
+      <Header />
+      <Signin />
+      <Referal />
+      <Footermain />
+      <Footer />
+    </div>
+  );
 }
 
-export default home
+export default home;
