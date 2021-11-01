@@ -97,6 +97,13 @@ require("./models/user");
 app.use(express.json());
 app.use(require("./routes/auth"));
 
+app.use(cors());
+
+require("./models/user");
+
+app.use(express.json());
+app.use(require("./routes/auth"));
+
 app.listen(port, () => {
   console.log(`Server is running on Port :: ${port}`);
 });
