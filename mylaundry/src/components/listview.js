@@ -61,16 +61,16 @@ function Listview() {
                   <td>
                     <input type="text" class="form-control" />
                   </td>
-                  <td></td>
-                  <td>2400</td>
+                  <td>Heaven</td>
+                  <td>India</td>
+                  <td>+91 7854893785</td>
+                  <td>10</td>
+                  <td>430 Rs</td>
+                  <td>Ready to Pickup</td>
+                  <td>Cancle Order</td>
                   <td>
-                    <button class="btn btn-primary">Reset</button>
+                    <i class="fa fa-eye"></i>
                   </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -79,9 +79,7 @@ function Listview() {
                   </td>
                   <td></td>
                   <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
+                  <td>+91 7854893785</td>
                 </tr>
                 <tr>
                   <td></td>
