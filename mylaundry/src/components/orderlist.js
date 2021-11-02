@@ -3,25 +3,37 @@ import Footer from "./footer";
 import Orderheader from "./orderheader";
 import "./mainhome.css";
 import "font-awesome/css/font-awesome.min.css";
-import Shirt from "../assets/shirt.jpg";
-import TShirt from "../assets/tshirt.jpg";
-import Trousers from "../assets/trousers.jpg";
-import Jeans from "../assets/jeans.jpg";
-import Wash from "../assets/wash.png";
-import Wash1 from "../assets/wash1.png";
-import Iron from "../assets/iron.png";
-import Iron1 from "../assets/iron1.png";
-import Liquid1 from "../assets/liquid1.png";
-import Fold from "../assets/fold.png";
-import Liquid from "../assets/liquid.png";
 import { Modal } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import Ordercomponent from "./ordercomponent";
 
 function Orderlist() {
   const [show, setShow] = useState(false);
-  const [wash, setWash] = useState(false);
-  const [iron, setIron] = useState(false);
-  const [liquid, setLiquid] = useState(false);
+  const orderComponents = [
+    {
+      image: "shirt.jpg",
+      description:
+        "It is a sequence of Latin words that, as they are positioned",
+    },
+    {
+      image: "tshirt.jpg",
+      description:
+        "It is a sequence of Latin words that, as they are positioned",
+    },
+    {
+      image: "jeans.jpg",
+      description:
+        "It is a sequence of Latin words that, as they are positioned",
+    },
+    {
+      image: "trousers.jpg",
+      description:
+        "It is a sequence of Latin words that, as they are positioned",
+    },
+  ];
+  // const [wash, setWash] = useState(false);
+  // const [iron, setIron] = useState(false);
+  // const [liquid, setLiquid] = useState(false);
   const history = useHistory();
   function cancelview() {
     console.log("Hello");
@@ -73,322 +85,12 @@ function Orderlist() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <img src={Shirt} alt="shirt" class="orderimg" />
-                      </div>
-                      <div class="col-lg-10">
-                        <p>
-                          It is a sequence of Latin words that, as they are
-                          positioned
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <img
-                          src={wash ? Wash1 : Wash}
-                          onClick={() => setWash(!wash)}
-                          alt="shirt"
-                        />
-                      </div>
-                      <div class="col-lg-3">
-                        <img
-                          src={iron ? Iron1 : Iron}
-                          onClick={() => setIron(!iron)}
-                          alt="shirt"
-                        />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Fold} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img
-                          src={liquid ? Liquid1 : Liquid}
-                          onClick={() => setLiquid(!liquid)}
-                          alt="shirt"
-                        />
-                      </div>
-                    </div>
-                  </td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <img src={TShirt} alt="shirt" class="orderimg" />
-                      </div>
-                      <div class="col-lg-10">
-                        <p>
-                          It is a sequence of Latin words that, as they are
-                          positioned
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <img src={Wash} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Iron} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Fold} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Liquid} alt="shirt" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <img src={Trousers} alt="shirt" class="orderimg" />
-                      </div>
-                      <div class="col-lg-10">
-                        <p>
-                          It is a sequence of Latin words that, as they are
-                          positioned
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <img src={Wash} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Iron} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Fold} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Liquid} alt="shirt" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <img src={Jeans} alt="shirt" class="orderimg" />
-                      </div>
-                      <div class="col-lg-10">
-                        <p>
-                          It is a sequence of Latin words that, as they are
-                          positioned
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <img src={Wash} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Iron} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Fold} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Liquid} alt="shirt" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <img src={Shirt} alt="shirt" class="orderimg" />
-                      </div>
-                      <div class="col-lg-10">
-                        <p>
-                          It is a sequence of Latin words that, as they are
-                          positioned
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <img src={Wash} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Iron} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Fold} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Liquid} alt="shirt" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <img src={TShirt} alt="shirt" class="orderimg" />
-                      </div>
-                      <div class="col-lg-10">
-                        <p>
-                          It is a sequence of Latin words that, as they are
-                          positioned
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <img src={Wash} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Iron} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Fold} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Liquid} alt="shirt" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <img src={Trousers} alt="shirt" class="orderimg" />
-                      </div>
-                      <div class="col-lg-10">
-                        <p>
-                          It is a sequence of Latin words that, as they are
-                          positioned
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <img src={Wash} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Iron} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Fold} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Liquid} alt="shirt" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <img src={Jeans} alt="shirt" class="orderimg" />
-                      </div>
-                      <div class="col-lg-10">
-                        <p>
-                          It is a sequence of Latin words that, as they are
-                          positioned
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td>
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <img src={Wash} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Iron} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Fold} alt="shirt" />
-                      </div>
-                      <div class="col-lg-3">
-                        <img src={Liquid} alt="shirt" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
+                {orderComponents.map((orderItem) => (
+                  <Ordercomponent
+                    image={orderItem.image}
+                    description={orderItem.description}
+                  />
+                ))}
               </tbody>
             </table>
             <div class="but-com">
