@@ -4,41 +4,51 @@ import Orderheader from "./orderheader";
 import "./mainhome.css";
 import "font-awesome/css/font-awesome.min.css";
 import { Modal } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
 import Ordercomponent from "./ordercomponent";
-
+import Summaryorder from "./summaryorder";
+const order = { orderId: "orderId", userId: "userId", details: new Map() };
+let orderedDate = [];
 function Orderlist() {
   const [show, setShow] = useState(false);
+
+  function handleCallback(props) {
+    order.details.set(props.name, props.value);
+    orderedDate = [...order.details].map(([name, value]) => ({ name, value }));
+    console.log("orderedData", orderedDate);
+    return;
+  }
+
   const orderComponents = [
     {
       image: "shirt.jpg",
       description:
         "It is a sequence of Latin words that, as they are positioned",
+      name: "Shirts",
     },
     {
       image: "tshirt.jpg",
       description:
         "It is a sequence of Latin words that, as they are positioned",
+      name: "Tshirts",
     },
     {
       image: "jeans.jpg",
       description:
         "It is a sequence of Latin words that, as they are positioned",
+      name: "Jeans",
     },
     {
       image: "trousers.jpg",
+
       description:
         "It is a sequence of Latin words that, as they are positioned",
+      name: "Trousers",
     },
   ];
   // const [wash, setWash] = useState(false);
   // const [iron, setIron] = useState(false);
   // const [liquid, setLiquid] = useState(false);
-  const history = useHistory();
-  function cancelview() {
-    console.log("Hello");
-    history.push("/listview");
-  }
+
   return (
     <div>
       <Orderheader />
@@ -89,17 +99,14 @@ function Orderlist() {
                   <Ordercomponent
                     image={orderItem.image}
                     description={orderItem.description}
+                    name={orderItem.name}
+                    handleClick={handleCallback}
                   />
                 ))}
               </tbody>
             </table>
             <div class="but-com">
-              <button
-                class="btn btn btn-outline-primary cancel"
-                onClick={cancelview}
-              >
-                Cancel
-              </button>
+              <button class="btn btn btn-outline-primary cancel">Cancel</button>
               <button
                 class="btn btn btn-primary proceed"
                 onClick={() => setShow(true)}
@@ -124,16 +131,9 @@ function Orderlist() {
                   <div class="col-lg-4">Store Location</div>
                   <div class="col-lg-4">Store Address</div>
                   <div class="col-lg-4">Phone</div>
+                  <div></div>
                 </div>
-                <p>
-                  Ipsum molestiae natus adipisci modi eligendi? Debitis amet
-                  quae unde commodi aspernatur enim, consectetur. Cumque
-                  deleniti temporibus ipsam atque a dolores quisquam quisquam
-                  adipisci possimus laboriosam. Quibusdam facilis doloribus
-                  debitis! Sit quasi quod accusamus eos quod. Ab quos
-                  consequuntur eaque quo rem! Mollitia reiciendis porro quo
-                  magni incidunt dolore amet atque facilis ipsum deleniti rem!
-                </p>
+                <Summaryorder orderedDate={orderedDate} />
               </Modal.Body>
             </Modal>
             <div class="createbtn"></div>
