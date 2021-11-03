@@ -148,7 +148,7 @@ function Registercard() {
               <p class="forgot">
                 <input
                   type="checkbox"
-                  class="form-check-input"
+                  class="form-check-input registercheck"
                   id="check1"
                   name="option1"
                   value="something"

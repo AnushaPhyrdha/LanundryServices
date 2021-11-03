@@ -1,10 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import Orderheader from "./orderheader";
 import Footer from "./footer";
+import OrderedItems from "./orderedItems";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { responsivePropType } from "react-bootstrap/esm/createUtilityClasses";
 
 function Listview() {
+  const history = useHistory();
+  function createlist() {
+    console.log("Hello");
+    history.push("/createorder");
+  }
   const [show, setShow] = useState(false);
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/orders", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTdmZTcwOThmNzMwOTYxOGJkYTJmMjIiLCJpYXQiOjE2MzU4MjQxODF9.DTvaFBeaFaoGfJfM0N8VA40XL09ORrDoT__CLlYDORk",
+        },
+      })
+      .then((response) => {
+        setTimeout(() => {
+          setOrders(response.data.data.orders);
+        }, 3000);
+        console.log(orders);
+      });
+  });
   return (
     <div>
       <Orderheader />
@@ -28,7 +54,12 @@ function Listview() {
               <div class="col-lg-2">
                 <p>Orders | 0</p>
               </div>
-              <div class="col-lg-8"></div>
+              <div class="col-lg-6"></div>
+              <div class="col-lg-2">
+                <button class="btn btn-primary " onClick={createlist}>
+                  Create
+                </button>
+              </div>
               <div class="col-lg-2">
                 <div class="form-group has-search">
                   <span class="fa fa-search form-control-feedback"></span>
@@ -51,71 +82,16 @@ function Listview() {
                   <th>Total Items</th>
                   <th>Price</th>
                   <th>Status</th>
-                  <th>Cancel option</th>
+                  <th>Cancel Order</th>
                   <th>View</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>OR001</td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td></td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td></td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td></td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>
-                    <input type="text" class="form-control" />
-                  </td>
-                  <td></td>
-                  <td>2400</td>
-                  <td>
-                    <button class="btn btn-primary">Reset</button>
-                  </td>
-                </tr>
+                {orders.map((orders) => (
+                  <OrderedItems key={orders.order_id} {...orders} />
+                ))}
               </tbody>
             </table>
-            <div class="but-com">
-              <button class="btn btn btn-outline-primary cancel">Cancel</button>
-              <button
-                class="btn btn btn-primary proceed"
-                onClick={() => setShow(true)}
-              >
-                proceed
-              </button>
-            </div>
 
             <Modal
               show={show}
@@ -125,7 +101,7 @@ function Listview() {
             >
               <Modal.Header closeButton>
                 <Modal.Title id="example-custom-modal-styling-title">
-                  summary
+                  Summary
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>

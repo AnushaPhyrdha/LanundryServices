@@ -1,23 +1,21 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import Home from './components/home'
-import { Switch} from "react-router";
-import { BrowserRouter as Router,Route } from "react-router-dom";
-import Register from '../src/components/register'
+import Home from "./components/home";
+import { Switch } from "react-router";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Register from "../src/components/register";
 import Createorder from "./components/createorder";
 import Orderlist from "./components/orderlist";
-import ListView from "./components/listview"
+import ListView from "./components/listview";
+import Summary from "./components/summary";
 
 function App() {
   return (
     <Router>
-      
-    <div className="App">
-      
-    </div>
-    <Switch>
-    <Route exact path="/">
-    <Home />
+      <div className="App"></div>
+      <Switch>
+        <Route exact path="/">
+          <Home />
         </Route>
         <Route path="/register">
           <Register />
@@ -30,6 +28,10 @@ function App() {
         </Route>
         <Route path="/listview">
           <ListView />
+        </Route>
+        // just for testing summary page.
+        <Route path="/summary">
+          <Summary />
         </Route>
       </Switch>
     </Router>
