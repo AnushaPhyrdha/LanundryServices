@@ -5,6 +5,7 @@ const router = express.Router();
 
 require("../models/user");
 const User = mongoose.model("User");
+console.log("user details", req.user);
 
 router.get("/", requireLogin, async function (req, res) {
   try {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./mainhome.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { getToken, setToken } from "../Utils/AuthOperations";
 
 function Signin() {
   const [email, setEmail] = useState("");
@@ -25,6 +26,8 @@ function Signin() {
       .then((response) => {
         {
           setUser(response.data);
+          setToken(response.data.token);
+          console.log("token", getToken());
           history.push("/createorder");
         }
         console.log("colour", colour);

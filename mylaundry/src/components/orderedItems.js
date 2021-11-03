@@ -125,8 +125,8 @@ function OrderedItems({ order_id, phone, address, status, total_price }) {
           <br />
           <br />
           <div className="confirm" id="button">
-            <button type="button" class="btn btn-primary">
-              Confirm
+            <button type="button" class="btn btn-danger">
+              Cancel order
             </button>
           </div>
         </Modal.Body>
