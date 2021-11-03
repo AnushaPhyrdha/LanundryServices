@@ -14,6 +14,7 @@ const OrderSchema = mongoose.Schema({
       price: { type: Number, required: true },
     },
   ],
+  total_quantity: { type: Number },
   total_price: { type: Number },
   status: {
     type: String,

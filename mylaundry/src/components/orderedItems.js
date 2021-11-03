@@ -22,7 +22,6 @@ function OrderedItems({ order_id, phone, address, status, total_price }) {
           <i class="fa fa-eye" onClick={() => setShow(true)}></i>
         </td>
       </tr>
-      // model
       <Modal
         show={show}
         onHide={() => setShow(false)}

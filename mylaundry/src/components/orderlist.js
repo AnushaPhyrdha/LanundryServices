@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Footer from "./footer";
 import Orderheader from "./orderheader";
+import "./orderlist.css";
 import "./mainhome.css";
 import "font-awesome/css/font-awesome.min.css";
 import { Modal } from "react-bootstrap";
@@ -127,24 +128,26 @@ function Orderlist() {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <div class="row mainadd">
-                  <div class="col-lg-4">
-                    <select data-bs-display="static" aria-expanded="false">
-                      <option disabled selected value>
-                        {" "}
-                        Store Location{" "}
-                      </option>
-                      <option>Hyderabad</option>
-                      <option>Banglore</option>
-                      <option>Guntur</option>
-                      <option>Delhi</option>
-                      <option>Gujarat</option>
-                    </select>
+                <div className="confirm_page">
+                  <div class="row mainadd">
+                    <div class="col-lg-4">
+                      <select data-bs-display="static" aria-expanded="false">
+                        <option disabled selected value>
+                          {" "}
+                          Store Location{" "}
+                        </option>
+                        <option>Hyderabad</option>
+                        <option>Banglore</option>
+                        <option>Guntur</option>
+                        <option>Delhi</option>
+                        <option>Gujarat</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-4">Store Address</div>
+                    <div class="col-lg-4">Phone</div>
                   </div>
-                  <div class="col-lg-4">Store Address</div>
-                  <div class="col-lg-4">Phone</div>
-                  <div></div>
                 </div>
+
                 <Summaryorder orderedDate={orderedDate} />
               </Modal.Body>
             </Modal>
