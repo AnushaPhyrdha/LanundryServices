@@ -82,6 +82,7 @@
   background: #5861ae 0% 0% no-repeat padding-box;
   opacity: 1;
   height: 720px;
+  width: 50px;
 }
 .createbtn {
   position: absolute;

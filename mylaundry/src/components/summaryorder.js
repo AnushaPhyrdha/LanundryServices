@@ -53,9 +53,11 @@ function Summaryorder(props) {
           </div>
         </div>
       </div>
-      <button class="btn btn-primary my-3 btncon" onClick={confirmlist}>
-        Confirm
-      </button>
+      <div class="btncon">
+        <button class="btn btn-primary my-3 " onClick={confirmlist}>
+          Confirm
+        </button>
+      </div>
     </div>
   );
 }
