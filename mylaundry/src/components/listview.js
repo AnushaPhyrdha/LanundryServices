@@ -81,15 +81,6 @@ function Listview() {
                 ))}
               </tbody>
             </table>
-            <div class="but-com">
-              <button class="btn btn btn-outline-primary cancel">Cancel</button>
-              <button
-                class="btn btn btn-primary proceed"
-                onClick={() => setShow(true)}
-              >
-                proceed
-              </button>
-            </div>
 
             <Modal
               show={show}
@@ -99,7 +90,7 @@ function Listview() {
             >
               <Modal.Header closeButton>
                 <Modal.Title id="example-custom-modal-styling-title">
-                  summary
+                  Summary
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
