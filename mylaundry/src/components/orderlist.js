@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Footer from "./footer";
 import Orderheader from "./orderheader";
+import "./orderlist.css";
 import "./mainhome.css";
 import "font-awesome/css/font-awesome.min.css";
 import Shirt from "../assets/shirt.jpg";
@@ -418,20 +419,111 @@ function Orderlist() {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <div class="row mainadd">
-                  <div class="col-lg-4">Store Location</div>
-                  <div class="col-lg-4">Store Address</div>
-                  <div class="col-lg-4">Phone</div>
+                <div className="confirm_page">
+                  <div class="row mainadd">
+                    <div class="col-lg-4">
+                      <select data-bs-display="static" aria-expanded="false">
+                        <option disabled selected value>
+                          {" "}
+                          Store Location{" "}
+                        </option>
+                        <option>Hyderabad</option>
+                        <option>Banglore</option>
+                        <option>Guntur</option>
+                        <option>Delhi</option>
+                        <option>Gujarat</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-4">Store Address</div>
+                    <div class="col-lg-4">Phone</div>
+                  </div>
+                  <div>
+                    <small>
+                      <b>Order Details</b>
+                    </small>
+                  </div>
+                  <table class="table table-sm">
+                    <tbody>
+                      <tr>
+                        <td>Shirts</td>
+                        <td>Washing</td>
+                        <td>4x10</td>
+                        <td>120</td>
+                      </tr>
+                      <tr>
+                        <td>Joggers</td>
+                        <td>Pressing</td>
+                        <td>3x15</td>
+                        <td>150</td>
+                      </tr>
+                      <tr>
+                        <td>Jeans</td>
+                        <td>Folding</td>
+                        <td>4x20</td>
+                        <td>140</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="subtotal">
+                    <table class="table table-sm">
+                      <tbody>
+                        <tr>
+                          <td>Sub total</td>
+                          <td>250</td>
+                        </tr>
+                        <tr>
+                          <td>Pickup Charges</td>
+                          <td>80</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="total">
+                    <table class="table table-sm">
+                      <tbody>
+                        <tr className="bg-primary">
+                          <td></td>
+                          <td>
+                            <table className="menu">
+                              <tr>
+                                <td>Total: </td>
+
+                                <td> 350 </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <br />
+                  <div class="card-columns col p-1 m-1 row-cols-lg-2">
+                    <div class="card bg-Basic">
+                      <div class="card-body text-center">
+                        <h6 class="card-title">Home</h6>
+                        <p class="card-text">
+                          #4-132, A-Colony, Jamshedpur, Near SBI
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card bg-Basic">
+                      <div class="card-body text-center">
+                        <h6 class="card-title">Home</h6>
+                        <p class="card-text">
+                          #4-1/2A, B-Colony, Hyderabad, Opposite Green valley
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <br />
+                  <div className="confirm" id="button">
+                    <button type="button" class="btn btn-primary">
+                      Confirm
+                    </button>
+                  </div>
                 </div>
-                <p>
-                  Ipsum molestiae natus adipisci modi eligendi? Debitis amet
-                  quae unde commodi aspernatur enim, consectetur. Cumque
-                  deleniti temporibus ipsam atque a dolores quisquam quisquam
-                  adipisci possimus laboriosam. Quibusdam facilis doloribus
-                  debitis! Sit quasi quod accusamus eos quod. Ab quos
-                  consequuntur eaque quo rem! Mollitia reiciendis porro quo
-                  magni incidunt dolore amet atque facilis ipsum deleniti rem!
-                </p>
               </Modal.Body>
             </Modal>
             <div class="createbtn"></div>
