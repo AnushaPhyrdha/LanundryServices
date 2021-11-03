@@ -4,9 +4,15 @@ import Orderheader from "./orderheader";
 import Footer from "./footer";
 import OrderedItems from "./orderedItems";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { responsivePropType } from "react-bootstrap/esm/createUtilityClasses";
 
 function Listview() {
+  const history = useHistory();
+  function createlist() {
+    console.log("Hello");
+    history.push("/createorder");
+  }
   const [show, setShow] = useState(false);
   const [orders, setOrders] = useState([]);
   useEffect(() => {
@@ -48,7 +54,12 @@ function Listview() {
               <div class="col-lg-2">
                 <p>Orders | 0</p>
               </div>
-              <div class="col-lg-8"></div>
+              <div class="col-lg-6"></div>
+              <div class="col-lg-2">
+                <button class="btn btn-primary " onClick={createlist}>
+                  Create
+                </button>
+              </div>
               <div class="col-lg-2">
                 <div class="form-group has-search">
                   <span class="fa fa-search form-control-feedback"></span>

@@ -70,7 +70,7 @@ function Orderlist() {
           <div class="col-lg-11">
             <div class="row">
               <div class="col-lg-2">
-                <p>Orders | 0</p>
+                <p>Create Order</p>
               </div>
               <div class="col-lg-8"></div>
               <div class="col-lg-2">
@@ -128,7 +128,19 @@ function Orderlist() {
               </Modal.Header>
               <Modal.Body>
                 <div class="row mainadd">
-                  <div class="col-lg-4">Store Location</div>
+                  <div class="col-lg-4">
+                    <select data-bs-display="static" aria-expanded="false">
+                      <option disabled selected value>
+                        {" "}
+                        Store Location{" "}
+                      </option>
+                      <option>Hyderabad</option>
+                      <option>Banglore</option>
+                      <option>Guntur</option>
+                      <option>Delhi</option>
+                      <option>Gujarat</option>
+                    </select>
+                  </div>
                   <div class="col-lg-4">Store Address</div>
                   <div class="col-lg-4">Phone</div>
                   <div></div>
