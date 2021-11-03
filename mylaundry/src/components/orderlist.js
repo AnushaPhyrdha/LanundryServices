@@ -7,10 +7,12 @@ import "font-awesome/css/font-awesome.min.css";
 import { Modal } from "react-bootstrap";
 import Ordercomponent from "./ordercomponent";
 import Summaryorder from "./summaryorder";
+import { useHistory } from "react-router-dom";
 const order = { orderId: "orderId", userId: "userId", details: new Map() };
 let orderedDate = [];
 function Orderlist() {
   const [show, setShow] = useState(false);
+  const history = useHistory();
 
   function handleCallback(props) {
     order.details.set(props.name, props.value);
@@ -58,13 +60,22 @@ function Orderlist() {
           <div class="col-lg-1 main-head">
             <div class="row">
               <div class="col-lg-12">
-                <i class="fa fa-home fontmain"></i>
+                <i
+                  class="fa fa-home fontmain"
+                  onClick={() => history.push("/")}
+                ></i>
               </div>
               <div class="col-lg-12">
-                <i class="fa fa-plus-circle fontmain1"></i>
+                <i
+                  class="fa fa-plus-circle fontmain1"
+                  onClick={() => history.push("/createorder")}
+                ></i>
               </div>
               <div class="col-lg-12">
-                <i class="fa fa-bars fontmain"></i>
+                <i
+                  class="fa fa-bars fontmain"
+                  onClick={() => history.push("/listview")}
+                ></i>
               </div>
             </div>
           </div>

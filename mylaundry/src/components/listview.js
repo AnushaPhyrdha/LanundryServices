@@ -5,7 +5,6 @@ import Footer from "./footer";
 import OrderedItems from "./orderedItems";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { responsivePropType } from "react-bootstrap/esm/createUtilityClasses";
 
 function Listview() {
   const history = useHistory();
@@ -39,13 +38,22 @@ function Listview() {
           <div class="col-lg-1 main-head">
             <div class="row">
               <div class="col-lg-12">
-                <i class="fa fa-home fontmain"></i>
+                <i
+                  class="fa fa-home fontmain"
+                  onClick={() => history.push("/")}
+                ></i>
               </div>
               <div class="col-lg-12">
-                <i class="fa fa-plus-circle fontmain1"></i>
+                <i
+                  class="fa fa-plus-circle fontmain"
+                  onClick={() => history.push("/createorder")}
+                ></i>
               </div>
               <div class="col-lg-12">
-                <i class="fa fa-bars fontmain"></i>
+                <i
+                  class="fa fa-bars fontmain1"
+                  onClick={() => history.push("/listview")}
+                ></i>
               </div>
             </div>
           </div>
