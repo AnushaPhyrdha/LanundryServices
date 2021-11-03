@@ -46,6 +46,17 @@ function Ordercomponent(props) {
   }
   useEffect(() => {
     costCalculation();
+    props.handleClick({
+      name: props.name,
+      value: {
+        quantity: quantity,
+        wash: wash,
+        press: iron,
+        fold: false,
+        pack: pack,
+        price: price,
+      },
+    });
   });
 
   return (

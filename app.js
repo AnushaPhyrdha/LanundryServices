@@ -5,6 +5,7 @@ const port = process.env.PORT || 5000;
 const OrderRoutes = require("./routes/order");
 const GetDetailsRoutes = require("./routes/get_userdetails");
 // const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const app = express();
 const db =
