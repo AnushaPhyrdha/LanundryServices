@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import Image from "../assets/img1.png";
 import "./mainhome.css";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { getToken } from "../Utils/AuthOperations";
 
 function Orderheader() {
+  const [user, setUser] = useState("");
   const history = useHistory();
   function laundryhome() {
     history.push("/");
   }
+
+  useEffect(() => {
+    console.log("orderheader", getToken());
+    axios
+      .get("http://localhost:5000/get", {
+        headers: { Authorization: "Bearer " + getToken().toString() },
+      })
+      .then((response) => {
+        console.log("test", response.data.data.get_user);
+        setUser(response.data.data.get_user.name);
+      });
+  });
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="dark">
@@ -24,7 +39,7 @@ function Orderheader() {
             <Nav.Link href="#features">
               <p class="signinlink">
                 <img src={Image} class="img" alt="image1" />
-                User Name
+                {user}
               </p>
             </Nav.Link>
           </Nav>
