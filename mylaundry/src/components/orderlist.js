@@ -123,7 +123,7 @@ function Orderlist() {
             >
               <Modal.Header closeButton>
                 <Modal.Title id="example-custom-modal-styling-title">
-                  summary
+                  Summary
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
