@@ -1,14 +1,31 @@
+import axios from "axios";
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { getToken } from "../Utils/AuthOperations";
 import Summaryfinal from "./summaryfinal";
 
 function Summaryorder(props) {
-  console.log("summaryorder", props.orderedDate);
   const history = useHistory();
   function confirmlist() {
+    const data = [];
+
+    props.orderedDate.forEach((order) => {
+      data.push({ item: order.name, ...order.value });
+    });
+
+    axios.post(
+      "http://localhost:5000/Orders",
+      {
+        details: data,
+        address: "Israel",
+        status: "Ready to Pick Up",
+      },
+      { headers: { Authorization: `Bearer ${getToken()}` } }
+    );
     console.log("Hello");
     history.push("/listview");
   }
+
   return (
     <div>
       <p class="order-head">Order Details</p>
