@@ -170,7 +170,12 @@ function Orderlist() {
                   </div>
                 </div>
 
-                <Summaryorder orderedDate={orderedDate} />
+                <Summaryorder
+                  total={orderedDate
+                    .map((order) => order.value.price)
+                    .reduce((acc, curr) => acc + parseInt(curr, 10), 0)}
+                  orderedDate={orderedDate}
+                />
               </Modal.Body>
             </Modal>
 
