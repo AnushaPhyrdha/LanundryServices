@@ -28,7 +28,9 @@ function Summary() {
         </Modal.Header>
         <Modal.Body>
           <div class="row mainadd">
-            <div class="col-lg-4">Store Location</div>
+            <div name="address" class="col-lg-4">
+              Store Location
+            </div>
             <div class="col-lg-4">Store Address</div>
             <div class="col-lg-4">Phone</div>
           </div>

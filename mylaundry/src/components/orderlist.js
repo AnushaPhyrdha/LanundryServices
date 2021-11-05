@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "./footer";
 import Orderheader from "./orderheader";
 import "./mainhome.css";
@@ -6,14 +6,19 @@ import "font-awesome/css/font-awesome.min.css";
 import { Modal } from "react-bootstrap";
 import Ordercomponent from "./ordercomponent";
 import Summaryorder from "./summaryorder";
+
 const order = { orderId: "orderId", userId: "userId", details: new Map() };
 let orderedDate = [];
+
 function Orderlist() {
   const [show, setShow] = useState(false);
 
   function handleCallback(props) {
     order.details.set(props.name, props.value);
-    orderedDate = [...order.details].map(([name, value]) => ({ name, value }));
+    orderedDate = [...order.details].map(([name, value]) => ({
+      name,
+      value,
+    }));
     console.log("orderedData", orderedDate);
     return;
   }
@@ -24,12 +29,14 @@ function Orderlist() {
       description:
         "It is a sequence of Latin words that, as they are positioned",
       name: "Shirts",
+      type: "Boolean",
     },
     {
       image: "tshirt.jpg",
       description:
         "It is a sequence of Latin words that, as they are positioned",
       name: "Tshirts",
+      type: "Boolean",
     },
     {
       image: "jeans.jpg",
@@ -39,16 +46,12 @@ function Orderlist() {
     },
     {
       image: "trousers.jpg",
-
       description:
         "It is a sequence of Latin words that, as they are positioned",
       name: "Trousers",
+      type: "Boolean",
     },
   ];
-  // const [wash, setWash] = useState(false);
-  // const [iron, setIron] = useState(false);
-  // const [liquid, setLiquid] = useState(false);
-
   return (
     <div>
       <Orderheader />
@@ -84,6 +87,7 @@ function Orderlist() {
                 </div>
               </div>
             </div>
+
             <table class="table maintable">
               <thead>
                 <tr class="table-dark ">
@@ -123,7 +127,7 @@ function Orderlist() {
             >
               <Modal.Header closeButton>
                 <Modal.Title id="example-custom-modal-styling-title">
-                  summary
+                  Summary
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
@@ -136,6 +140,7 @@ function Orderlist() {
                 <Summaryorder orderedDate={orderedDate} />
               </Modal.Body>
             </Modal>
+
             <div class="createbtn"></div>
           </div>
         </div>

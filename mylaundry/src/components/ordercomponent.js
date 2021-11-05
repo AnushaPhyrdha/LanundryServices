@@ -65,6 +65,8 @@ function Ordercomponent(props) {
         <div class="row">
           <div class="col-lg-2">
             <img
+              name="item"
+              type="text"
               src={`${process.env.PUBLIC_URL}/assets/${props.image}`}
               alt="shirt"
               class="orderimg"
@@ -78,6 +80,7 @@ function Ordercomponent(props) {
       <td>
         <input
           type="text"
+          name="quantity"
           class="form-control"
           onChange={(e) => {
             setQuantity(e.target.value);
@@ -89,6 +92,8 @@ function Ordercomponent(props) {
         <div class="row">
           <div class="col-lg-3">
             <img
+              type="Boolean"
+              name="wash"
               src={wash ? Wash1 : Wash}
               onClick={() => {
                 washChange();
@@ -98,6 +103,8 @@ function Ordercomponent(props) {
           </div>
           <div class="col-lg-3">
             <img
+              type="Boolean"
+              name="press"
               src={iron ? Iron1 : Iron}
               onClick={() => {
                 pressChange();
@@ -106,10 +113,12 @@ function Ordercomponent(props) {
             />
           </div>
           <div class="col-lg-3">
-            <img src={Fold} alt="shirt" />
+            <img type="Boolean" name="fold" src={Fold} alt="shirt" />
           </div>
           <div class="col-lg-3">
             <img
+              type="Boolean"
+              name="pack"
               src={pack ? Liquid1 : Liquid}
               onClick={() => {
                 packChange();

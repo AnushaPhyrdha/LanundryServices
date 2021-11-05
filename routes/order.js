@@ -34,6 +34,7 @@ router.post("/", requireLogin, async function (req, res) {
   };
   const Details = req.body.details;
   let Price = 0;
+  let Quantity = 0;
 
   Details.forEach((detail) => {
     let total = 0;
@@ -51,12 +52,14 @@ router.post("/", requireLogin, async function (req, res) {
     }
     detail["price"] = total;
     Price += total;
+    Quantity += detail.quantity;
   });
 
   const { address, status } = req.body;
   const order = await Order.create({
     order_id: order_num,
     details: Details,
+    total_quantity: Quantity,
     user_id: mongoose.Types.ObjectId(req.user[0]._id),
     total_price: Price,
     address,

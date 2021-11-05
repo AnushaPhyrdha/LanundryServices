@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Summaryfinal from "./summaryfinal";
 
@@ -9,6 +9,7 @@ function Summaryorder(props) {
     console.log("Hello");
     history.push("/listview");
   }
+
   return (
     <div>
       <p class="order-head">Order Details</p>
