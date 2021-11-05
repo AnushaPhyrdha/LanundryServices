@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import moment from "moment";
 // import Summary from "./summary";
 import Summaryfinal from "./summaryfinal";
 import { Modal } from "react-bootstrap";
@@ -15,6 +16,7 @@ function OrderedItems({
   total_quantity,
   status,
   total_price,
+  createdAt,
 }) {
   const [show, setShow] = useState(false);
   const [orderDetails, setOrderDetails] = useState([]);
@@ -33,7 +35,7 @@ function OrderedItems({
     <>
       <tr>
         <td>{order_id}</td>
-        <td>01Nov2021</td>
+        <td>{moment(createdAt).format("DD MMM YYYY,HH:mm")}</td>
         <td>Heaven</td>
         <td>{address}</td>
         <td>{phone}</td>
