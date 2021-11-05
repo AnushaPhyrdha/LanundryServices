@@ -197,3 +197,26 @@
 .btncon {
   text-align: right;
 }
+.resetbtn {
+  border: 1px solid #5861ae;
+  border-radius: 4px;
+  opacity: 1;
+  padding: 0px 25px;
+  font: normal normal 600 14px/48px Open Sans;
+  letter-spacing: 0px;
+  color: #5861ae;
+}
+.order-ava {
+  letter-spacing: 0px;
+  color: #222b45;
+  opacity: 0.5;
+}
+.create-order {
+  border: 1px solid #5861ae;
+  border-radius: 4px;
+  opacity: 1;
+  font: normal normal 600 14px/48px Open Sans;
+  letter-spacing: 0px;
+  color: #5861ae;
+  padding: 0px 25px;
+}

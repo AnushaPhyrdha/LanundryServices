@@ -52,7 +52,7 @@ router.post("/", requireLogin, async function (req, res) {
     }
     detail["price"] = total;
     Price += total;
-    Quantity += detail.quantity;
+    Quantity += parseInt(detail.quantity);
   });
 
   const { address, status } = req.body;
@@ -90,6 +90,24 @@ router.delete("/:id", requireLogin, async function (req, res) {
   res.json({
     status: "success",
   });
+});
+
+router.get("/:id", requireLogin, async function (req, res) {
+  try {
+    const order = await Order.findOne({
+      _id: mongoose.Types.ObjectId(req.params.id),
+      user_id: req.user,
+    });
+    return res.json({
+      status: "success",
+      data: order,
+    });
+  } catch (e) {
+    res.json({
+      status: "failed",
+      message: e.message,
+    });
+  }
 });
 
 module.exports = router;

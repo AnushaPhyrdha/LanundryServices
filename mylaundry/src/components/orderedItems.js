@@ -1,11 +1,34 @@
+import axios from "axios";
 import React, { useState } from "react";
 // import Summary from "./summary";
+import Summaryfinal from "./summaryfinal";
 import { Modal } from "react-bootstrap";
+import { getToken } from "../Utils/AuthOperations";
 
 // const { order_id, phone, address, status, total_price } = res.body;
 
-function OrderedItems({ order_id, phone, address, status, total_price }) {
+function OrderedItems({
+  _id,
+  order_id,
+  phone,
+  address,
+  total_quantity,
+  status,
+  total_price,
+}) {
   const [show, setShow] = useState(false);
+  const [orderDetails, setOrderDetails] = useState([]);
+
+  async function handleClick() {
+    setShow(true);
+    axios
+      .get(`http://localhost:5000/orders/${_id}`, {
+        headers: { Authorization: `Bearer ${getToken()}` },
+      })
+      .then((res) => {
+        setOrderDetails(res.data.data.details);
+      });
+  }
   return (
     <>
       <tr>
@@ -14,12 +37,14 @@ function OrderedItems({ order_id, phone, address, status, total_price }) {
         <td>Heaven</td>
         <td>{address}</td>
         <td>{phone}</td>
-        <td>18</td>
+        <td>{total_quantity}</td>
         <td>{total_price}</td>
         <td>{status}</td>
-        <td>Cancel Order</td>
         <td>
-          <i class="fa fa-eye" onClick={() => setShow(true)}></i>
+          <p class="text-danger font-weight-bold">Cancel Order</p>
+        </td>
+        <td>
+          <i class="fa fa-eye" onClick={handleClick}></i>
         </td>
       </tr>
       <Modal
@@ -57,68 +82,47 @@ function OrderedItems({ order_id, phone, address, status, total_price }) {
               <p>Order Details</p>
             </small>
           </div>
-          <table class="table table-sm">
-            <tbody>
-              <tr>
-                <td>Shirts</td>
-                <td>Washing</td>
-                <td>4 x 10 =</td>
-                <td>40</td>
-              </tr>
-              <tr>
-                <td>Joggers</td>
-                <td>Pressing</td>
-                <td>3 x 15 =</td>
-                <td>45</td>
-              </tr>
-              <tr>
-                <td>Jeans</td>
-                <td>Folding</td>
-                <td>4 x 20 =</td>
-                <td>80</td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="subtotal">
-            <table class="table table-sm">
-              <tbody>
-                <tr>
-                  <td>Sub total</td>
-                  <td>165</td>
-                </tr>
-                <tr>
-                  <td>Pickup Charges</td>
-                  <td>80</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="total">
-            <table class="table table-sm">
-              <tbody>
-                <tr>
-                  <td className=""></td>
-                  <td>
-                    <table className="strip">
-                      <tr>
-                        <td>Total: </td>
-                        <td>245</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {orderDetails.length > 0 &&
+            orderDetails.map(
+              (orderedItem) =>
+                orderedItem.quantity > 0 &&
+                (orderedItem.wash ||
+                  orderedItem.fold ||
+                  orderedItem.press ||
+                  orderedItem.pack) && (
+                  <Summaryfinal
+                    name={orderedItem.item}
+                    type={orderedItem}
+                    cost={orderedItem.price}
+                  />
+                )
+            )}
 
+          <div class="rate-head">sub Total : 450</div>
+
+          <div class="rate-head">Pick Up Charges : 90</div>
+
+          <div class="row totalcss my-3">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 ">Total : Rs560</div>
+          </div>
           <br />
 
           <div>
             <h6 className="add">Address</h6>
           </div>
-          <div className="address-box">
-            <h5 className="address-H">Home</h5>
-            <p className="address-F">001/ 893, its my address. city</p>
+          <div class="container">
+            <div class="row">
+              <div className="col-lg-4 address-box card bg-Basic py-3 px-2">
+                <div class="card-body text-center">
+                  <h6 class="card-title">Home</h6>
+                  <p class="card-text">
+                    #4-132, A-Colony, Jamshedpur, Near SBI
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           {/* </div> */}
 

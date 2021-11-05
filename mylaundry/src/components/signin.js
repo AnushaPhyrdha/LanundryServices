@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./mainhome.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { setToken } from "../Utils/AuthOperations";
+import { getToken, setToken } from "../Utils/AuthOperations";
 
 function Signin() {
   const [email, setEmail] = useState("");

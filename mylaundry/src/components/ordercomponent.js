@@ -13,7 +13,7 @@ function Ordercomponent(props) {
   const [pack, setPack] = useState(false);
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState("---");
-  const washCost = 25;
+  const washCost = 20;
   const pressCost = 15;
   const foldCost = 10;
   const packCost = 25;
@@ -130,7 +130,9 @@ function Ordercomponent(props) {
       </td>
       <td>{price}</td>
       <td>
-        <button class="btn btn-primary">Reset</button>
+        <button class="btn resetbtn" type="reset">
+          Reset
+        </button>
       </td>
     </tr>
   );

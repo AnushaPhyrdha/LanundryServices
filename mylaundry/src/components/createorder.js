@@ -56,8 +56,8 @@ function Createorder() {
               </div>
             </div>
             <div class="createbtn">
-              <p>No Orders available</p>
-              <button class="btn btn-primary " onClick={createlist}>
+              <p class="order-ava">No Orders available</p>
+              <button class="btn create-order" onClick={createlist}>
                 Create
               </button>
             </div>
