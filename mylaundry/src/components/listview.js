@@ -19,8 +19,7 @@ function Listview() {
       .get("http://localhost:5000/orders", {
         headers: {
           "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTdmZTcwOThmNzMwOTYxOGJkYTJmMjIiLCJpYXQiOjE2MzU4MjQxODF9.DTvaFBeaFaoGfJfM0N8VA40XL09ORrDoT__CLlYDORk",
+          Authorization: `Bearer ${getToken()}`,
         },
       })
       .then((response) => {

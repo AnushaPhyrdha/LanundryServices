@@ -59,6 +59,7 @@ router.post("/", requireLogin, async function (req, res) {
   const order = await Order.create({
     order_id: order_num,
     details: Details,
+    total_quantity: Quantity,
     user_id: mongoose.Types.ObjectId(req.user[0]._id),
     total_quantity: Quantity,
     total_price: Price,

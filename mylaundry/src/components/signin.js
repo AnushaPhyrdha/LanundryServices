@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./mainhome.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { getToken, setToken } from "../Utils/AuthOperations";
+import { setToken } from "../Utils/AuthOperations";
 
 function Signin() {
   const [email, setEmail] = useState("");
@@ -25,6 +25,9 @@ function Signin() {
       })
       .then((response) => {
         {
+          const { data } = response;
+          setToken(data.token);
+          console.log("Token: ", data.token);
           setUser(response.data);
           setToken(response.data.token);
           console.log("token", getToken());
