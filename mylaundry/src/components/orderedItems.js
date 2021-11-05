@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 // import Summary from "./summary";
 import Summaryfinal from "./summaryfinal";
@@ -31,6 +31,7 @@ function OrderedItems({
         setOrderDetails(res.data.data.details);
       });
   }
+
   return (
     <>
       <tr>
@@ -100,14 +101,24 @@ function OrderedItems({
                 )
             )}
 
-          <div class="rate-head">sub Total : 450</div>
+          <div class="rate-head">
+            sub Total :{" "}
+            {orderDetails
+              .map((order) => order.price)
+              .reduce((acc, curr) => acc + parseInt(curr, 10), 0)}
+          </div>
 
           <div class="rate-head">Pick Up Charges : 90</div>
 
           <div class="row totalcss my-3">
             <div class="col-lg-4"></div>
             <div class="col-lg-4"></div>
-            <div class="col-lg-4 ">Total : Rs560</div>
+            <div class="col-lg-4 ">
+              Total : Rs{" "}
+              {orderDetails
+                .map((order) => order.price)
+                .reduce((acc, curr) => acc + parseInt(curr, 10), 90)}
+            </div>
           </div>
           <br />
 

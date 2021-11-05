@@ -45,14 +45,14 @@ function Summaryorder(props) {
             )
         )}
 
-      <div class="rate-head">sub Total : 450</div>
+      <div class="rate-head">sub Total: {props.total}</div>
 
       <div class="rate-head">Pick Up Charges : 90</div>
 
       <div class="row totalcss">
         <div class="col-lg-4"></div>
         <div class="col-lg-4"></div>
-        <div class="col-lg-4 ">Total : Rs560</div>
+        <div class="col-lg-4 ">Total : Rs {props.total + 90}</div>
       </div>
       <div class="card-columns col p-1 m-1 row-cols-lg-2">
         <div class="card bg-Basic">
