@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import moment from "moment";
+import "./summary.css";
 // import Summary from "./summary";
 import Summaryfinal from "./summaryfinal";
 import { Modal } from "react-bootstrap";
@@ -19,10 +20,16 @@ function OrderedItems({
   createdAt,
 }) {
   const [show, setShow] = useState(false);
+  const [cancle, setCancel] = useState(false);
   const [orderDetails, setOrderDetails] = useState([]);
+
+  async function Cancel() {
+    setCancel(true);
+  }
 
   async function handleClick() {
     setShow(true);
+    //setCancel(true);
     axios
       .get(`http://localhost:5000/orders/${_id}`, {
         headers: { Authorization: `Bearer ${getToken()}` },
@@ -43,7 +50,9 @@ function OrderedItems({
         <td>{total_price}</td>
         <td>{status}</td>
         <td>
-          <p class="text-danger font-weight-bold">Cancel Order</p>
+          <p class="text-danger font-weight-bold" onClick={Cancel}>
+            Cancel Order
+          </p>
         </td>
         <td>
           <i class="fa fa-eye" onClick={handleClick}></i>
@@ -134,6 +143,35 @@ function OrderedItems({
             <button type="button" class="btn btn-danger">
               Cancel order
             </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={cancle}
+        onHide={() => setCancel(false)}
+        dialogClassName="modal-30w"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-custom-modal-styling-title">
+            Alert
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="container">
+            <div className="modal-dialog">
+              <div className="text-center">
+                <i className="fa fa-exclamation-triangle"></i>
+              </div>
+              <div className="cancel_page text-center">
+                <p>Are you sure want to cancel the order Order No: LUSORD01 </p>
+              </div>
+            </div>
+            <div className="cancel_button">
+              <button type="button" className="btn btn-danger">
+                Proceed
+              </button>
+            </div>
           </div>
         </Modal.Body>
       </Modal>
