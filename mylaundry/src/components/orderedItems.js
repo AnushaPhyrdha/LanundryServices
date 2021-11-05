@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import "./summary.css";
 // import Summary from "./summary";
@@ -27,6 +27,14 @@ function OrderedItems({
     setCancel(true);
   }
 
+  async function handleClickStatus() {
+    axios.put(
+      `http://localhost:5000/orders/${_id}`,
+      {},
+      { headers: { Authorization: `Bearer ${getToken()}` } }
+    );
+  }
+
   async function handleClick() {
     setShow(true);
     //setCancel(true);
@@ -52,7 +60,7 @@ function OrderedItems({
         <td>{status}</td>
         <td>
           <p class="text-danger font-weight-bold" onClick={Cancel}>
-            Cancel Order
+            {status === "Ready to Pick Up" ? "Cancel Order" : "--"}
           </p>
         </td>
         <td>
@@ -151,7 +159,11 @@ function OrderedItems({
           <br />
           <br />
           <div className="confirm" id="button">
-            <button type="button" class="btn btn-danger">
+            <button
+              type="button"
+              class="btn btn-danger"
+              onClick={handleClickStatus}
+            >
               Cancel order
             </button>
           </div>
@@ -170,16 +182,25 @@ function OrderedItems({
         </Modal.Header>
         <Modal.Body>
           <div className="container">
-            <div className="modal-dialog">
-              <div className="text-center">
-                <i className="fa fa-exclamation-triangle"></i>
+            <div class="row">
+              <div class="col-lg-4">
+                {" "}
+                <i className="fa fa-exclamation-triangle fatri"></i>
               </div>
-              <div className="cancel_page text-center">
-                <p>Are you sure want to cancel the order Order No: LUSORD01 </p>
+              <div class="col-lg-8">
+                {" "}
+                <p>
+                  Are you sure want to cancel the order Order No:{" "}
+                  <spam class="ordername">{order_id}</spam>{" "}
+                </p>
               </div>
             </div>
             <div className="cancel_button">
-              <button type="button" className="btn btn-danger">
+              <button
+                type="button"
+                className="itemsproceed"
+                onClick={handleClickStatus}
+              >
                 Proceed
               </button>
             </div>

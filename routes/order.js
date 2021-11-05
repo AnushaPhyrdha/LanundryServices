@@ -110,4 +110,26 @@ router.get("/:id", requireLogin, async function (req, res) {
   }
 });
 
+router.put("/:id", requireLogin, async function (req, res) {
+  try {
+    const order = await Order.findOneAndUpdate(
+      {
+        _id: mongoose.Types.ObjectId(req.params.id),
+        user_id: req.user,
+      },
+      { $set: { status: "Cancelled" } },
+      { new: true }
+    );
+    return res.json({
+      status: "success",
+      data: order,
+    });
+  } catch (e) {
+    res.json({
+      status: "failed",
+      message: e.message,
+    });
+  }
+});
+
 module.exports = router;
