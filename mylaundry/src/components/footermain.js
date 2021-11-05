@@ -37,12 +37,6 @@ function footermain() {
                 <i class="fa fa-instagram"></i>
                 <i class="fa fa-linkedin-square"></i>
               </div>
-              {/* <div class="col-lg-4">
-                            <i class="fa fa-instagram"></i>
-                            </div>
-                            <div class="col-lg-4">
-                            <i class="fa fa-linkedin"></i>
-                            </div> */}
             </div>
           </div>
         </div>

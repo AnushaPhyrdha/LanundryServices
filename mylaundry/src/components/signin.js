@@ -29,6 +29,8 @@ function Signin() {
           setToken(data.token);
           console.log("Token: ", data.token);
           setUser(response.data);
+          setToken(response.data.token);
+          console.log("token", getToken());
           history.push("/createorder");
         }
         console.log("colour", colour);

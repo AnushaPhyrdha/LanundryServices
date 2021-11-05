@@ -61,6 +61,7 @@ router.post("/", requireLogin, async function (req, res) {
     details: Details,
     total_quantity: Quantity,
     user_id: mongoose.Types.ObjectId(req.user[0]._id),
+    total_quantity: Quantity,
     total_price: Price,
     address,
     status,

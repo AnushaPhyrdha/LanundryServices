@@ -1,11 +1,27 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React from "react";
 import { useHistory } from "react-router-dom";
+import { getToken } from "../Utils/AuthOperations";
 import Summaryfinal from "./summaryfinal";
 
 function Summaryorder(props) {
-  console.log("summaryorder", props.orderedDate);
   const history = useHistory();
   function confirmlist() {
+    const data = [];
+
+    props.orderedDate.forEach((order) => {
+      data.push({ item: order.name, ...order.value });
+    });
+
+    axios.post(
+      "http://localhost:5000/Orders",
+      {
+        details: data,
+        address: "Israel",
+        status: "Ready to Pick Up",
+      },
+      { headers: { Authorization: `Bearer ${getToken()}` } }
+    );
     console.log("Hello");
     history.push("/listview");
   }
@@ -38,10 +54,27 @@ function Summaryorder(props) {
         <div class="col-lg-4"></div>
         <div class="col-lg-4 ">Total : Rs560</div>
       </div>
-      <p>Address</p>
-      <button class="btn btn-primary my-3 btncon" onClick={confirmlist}>
-        Confirm
-      </button>
+      <div class="card-columns col p-1 m-1 row-cols-lg-2">
+        <div class="card bg-Basic">
+          <div class="card-body text-center">
+            <h6 class="card-title">Home</h6>
+            <p class="card-text">#4-132, A-Colony, Jamshedpur, Near SBI</p>
+          </div>
+        </div>
+        <div class="card bg-Basic">
+          <div class="card-body text-center">
+            <h6 class="card-title">Home</h6>
+            <p class="card-text">
+              #4-1/2A, B-Colony, Hyderabad, Opposite Green valley
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="btncon">
+        <button class="btn btn-primary my-3 " onClick={confirmlist}>
+          Confirm
+        </button>
+      </div>
     </div>
   );
 }

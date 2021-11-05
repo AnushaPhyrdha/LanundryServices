@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Footer from "./footer";
 import Orderheader from "./orderheader";
+import "./orderlist.css";
 import "./mainhome.css";
 import "font-awesome/css/font-awesome.min.css";
 import { Modal } from "react-bootstrap";
 import Ordercomponent from "./ordercomponent";
 import Summaryorder from "./summaryorder";
-
 const order = { orderId: "orderId", userId: "userId", details: new Map() };
 let orderedDate = [];
 
 function Orderlist() {
   const [show, setShow] = useState(false);
+
+  const history = useHistory();
 
   function handleCallback(props) {
     order.details.set(props.name, props.value);
@@ -60,20 +62,29 @@ function Orderlist() {
           <div class="col-lg-1 main-head">
             <div class="row">
               <div class="col-lg-12">
-                <i class="fa fa-home fontmain"></i>
+                <i
+                  class="fa fa-home fontmain"
+                  onClick={() => history.push("/")}
+                ></i>
               </div>
               <div class="col-lg-12">
-                <i class="fa fa-plus-circle fontmain1"></i>
+                <i
+                  class="fa fa-plus-circle fontmain1"
+                  onClick={() => history.push("/createorder")}
+                ></i>
               </div>
               <div class="col-lg-12">
-                <i class="fa fa-bars fontmain"></i>
+                <i
+                  class="fa fa-bars fontmain"
+                  onClick={() => history.push("/listview")}
+                ></i>
               </div>
             </div>
           </div>
           <div class="col-lg-11">
             <div class="row">
               <div class="col-lg-2">
-                <p>Orders | 0</p>
+                <p>Create Order</p>
               </div>
               <div class="col-lg-8"></div>
               <div class="col-lg-2">
@@ -131,12 +142,26 @@ function Orderlist() {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <div class="row mainadd">
-                  <div class="col-lg-4">Store Location</div>
-                  <div class="col-lg-4">Store Address</div>
-                  <div class="col-lg-4">Phone</div>
-                  <div></div>
+                <div className="confirm_page">
+                  <div class="row mainadd">
+                    <div class="col-lg-4">
+                      <select data-bs-display="static" aria-expanded="false">
+                        <option disabled selected value>
+                          {" "}
+                          Store Location{" "}
+                        </option>
+                        <option>Hyderabad</option>
+                        <option>Banglore</option>
+                        <option>Guntur</option>
+                        <option>Delhi</option>
+                        <option>Gujarat</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-4">Store Address</div>
+                    <div class="col-lg-4">Phone</div>
+                  </div>
                 </div>
+
                 <Summaryorder orderedDate={orderedDate} />
               </Modal.Body>
             </Modal>

@@ -12,9 +12,7 @@ function summaryfinal(props) {
             "," +
             (props.type.press ? "Pressing" : "")}
         </div>
-        <div class="col-lg-4 rate-head">
-          {props.cost}=<spam class="spamrate">100</spam>
-        </div>
+        <div class="col-lg-4 rate-head">{props.cost}</div>
       </div>
     </div>
   );

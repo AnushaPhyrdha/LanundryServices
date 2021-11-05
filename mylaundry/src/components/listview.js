@@ -4,10 +4,14 @@ import Orderheader from "./orderheader";
 import Footer from "./footer";
 import OrderedItems from "./orderedItems";
 import axios from "axios";
-import { responsivePropType } from "react-bootstrap/esm/createUtilityClasses";
-import { getToken } from "../Utils/AuthOperations";
+import { useHistory } from "react-router-dom";
 
 function Listview() {
+  const history = useHistory();
+  function createlist() {
+    console.log("Hello");
+    history.push("/createorder");
+  }
   const [show, setShow] = useState(false);
   const [orders, setOrders] = useState([]);
   useEffect(() => {
@@ -33,13 +37,22 @@ function Listview() {
           <div class="col-lg-1 main-head">
             <div class="row">
               <div class="col-lg-12">
-                <i class="fa fa-home fontmain"></i>
+                <i
+                  class="fa fa-home fontmain"
+                  onClick={() => history.push("/")}
+                ></i>
               </div>
               <div class="col-lg-12">
-                <i class="fa fa-plus-circle fontmain1"></i>
+                <i
+                  class="fa fa-plus-circle fontmain"
+                  onClick={() => history.push("/createorder")}
+                ></i>
               </div>
               <div class="col-lg-12">
-                <i class="fa fa-bars fontmain"></i>
+                <i
+                  class="fa fa-bars fontmain1"
+                  onClick={() => history.push("/listview")}
+                ></i>
               </div>
             </div>
           </div>
@@ -48,7 +61,12 @@ function Listview() {
               <div class="col-lg-2">
                 <p>Orders | 0</p>
               </div>
-              <div class="col-lg-8"></div>
+              <div class="col-lg-6"></div>
+              <div class="col-lg-2">
+                <button class="btn btn-primary " onClick={createlist}>
+                  Create
+                </button>
+              </div>
               <div class="col-lg-2">
                 <div class="form-group has-search">
                   <span class="fa fa-search form-control-feedback"></span>
@@ -81,15 +99,6 @@ function Listview() {
                 ))}
               </tbody>
             </table>
-            <div class="but-com">
-              <button class="btn btn btn-outline-primary cancel">Cancel</button>
-              <button
-                class="btn btn btn-primary proceed"
-                onClick={() => setShow(true)}
-              >
-                proceed
-              </button>
-            </div>
 
             <Modal
               show={show}
@@ -99,7 +108,7 @@ function Listview() {
             >
               <Modal.Header closeButton>
                 <Modal.Title id="example-custom-modal-styling-title">
-                  summary
+                  Summary
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
