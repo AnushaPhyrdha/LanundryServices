@@ -19,7 +19,7 @@ const OrderSchema = mongoose.Schema(
     total_price: { type: Number },
     status: {
       type: String,
-      enum: ["Ready to Pick Up", "Washed", "Ironed", "Delivered"],
+      enum: ["Ready to Pick Up", "Washed", "Ironed", "Delivered", "Cancelled"],
       default: "Ready to Pick Up",
       required: true,
     },

@@ -9,6 +9,7 @@ import { getToken } from "../Utils/AuthOperations";
 
 function Listview() {
   const history = useHistory();
+  const [count, setCount] = useState(0);
   function createlist() {
     console.log("Hello");
     history.push("/createorder");
@@ -26,7 +27,8 @@ function Listview() {
       .then((response) => {
         setTimeout(() => {
           setOrders(response.data.data.orders);
-        }, 3000);
+          setCount(orders.length);
+        }, 2000);
         console.log(orders);
       });
   });
@@ -60,7 +62,7 @@ function Listview() {
           <div class="col-lg-11">
             <div class="row">
               <div class="col-lg-2">
-                <p>Orders | 0</p>
+                <p>Orders | {count}</p>
               </div>
               <div class="col-lg-6"></div>
               <div class="col-lg-2">
