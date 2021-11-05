@@ -20,7 +20,6 @@ function Orderheader() {
         headers: { Authorization: "Bearer " + getToken().toString() },
       })
       .then((response) => {
-        console.log("test", response.data.data.get_user);
         setUser(response.data.data.get_user.name);
       });
   });

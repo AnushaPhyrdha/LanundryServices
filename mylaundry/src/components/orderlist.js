@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Footer from "./footer";
 import Orderheader from "./orderheader";
 import "./orderlist.css";
@@ -7,6 +7,8 @@ import "font-awesome/css/font-awesome.min.css";
 import { Modal } from "react-bootstrap";
 import Ordercomponent from "./ordercomponent";
 import Summaryorder from "./summaryorder";
+import { useHistory } from "react-router-dom";
+
 const order = { orderId: "orderId", userId: "userId", details: new Map() };
 let orderedDate = [];
 
@@ -157,8 +159,14 @@ function Orderlist() {
                         <option>Gujarat</option>
                       </select>
                     </div>
-                    <div class="col-lg-4">Store Address</div>
-                    <div class="col-lg-4">Phone</div>
+                    <div class="col-lg-4">
+                      <h6>Store Location</h6>
+                      <p>Near Phone Booth, 10th Road</p>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6>Phone</h6>
+                      <p>+91 9999999999</p>
+                    </div>
                   </div>
                 </div>
 
