@@ -6,6 +6,7 @@ import Iron1 from "../assets/iron1.png";
 import Liquid1 from "../assets/liquid1.png";
 import Fold from "../assets/fold.png";
 import Liquid from "../assets/liquid.png";
+import Fold1 from "../assets/fold1.png";
 
 function Ordercomponent(props) {
   const [wash, setWash] = useState(false);
@@ -123,7 +124,7 @@ function Ordercomponent(props) {
             <img
               type="Boolean"
               name="fold"
-              src={Fold}
+              src={fold ? Fold1 : Fold}
               onClick={() => {
                 foldChange();
               }}
