@@ -62,10 +62,12 @@ router.post("/register", (req, res) => {
 
 router.post("/signin", (req, res) => {
   const { email, phone, password } = req.body;
+  console.log(email, phone);
   if (!(email || phone) || !password) {
     return res.status(422).json({ error: "Email and Password both Required" });
   }
-  User.findOne({ $or: [{ email: email }, { phone: phone }] }).then(
+
+  User.findOne({ $or: [{ email: email }, { phone: email }] }).then(
     (savedUser) => {
       if (!savedUser) {
         return res.status(422).json({ error: "Invalid Email or Password" });

@@ -11,6 +11,7 @@ function Ordercomponent(props) {
   const [wash, setWash] = useState(false);
   const [iron, setIron] = useState(false);
   const [pack, setPack] = useState(false);
+  const [fold, setFold] = useState(false);
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState("---");
   const washCost = 20;
@@ -31,6 +32,9 @@ function Ordercomponent(props) {
     if (pack) {
       cost += quantity * packCost;
     }
+    if (fold) {
+      cost += quantity * foldCost;
+    }
     setPrice(cost);
   }
 
@@ -44,6 +48,9 @@ function Ordercomponent(props) {
   function packChange() {
     setPack(!pack);
   }
+  function foldChange() {
+    setFold(!fold);
+  }
   useEffect(() => {
     costCalculation();
     props.handleClick({
@@ -52,7 +59,7 @@ function Ordercomponent(props) {
         quantity: quantity,
         wash: wash,
         press: iron,
-        fold: false,
+        fold: fold,
         pack: pack,
         price: price,
       },
@@ -98,7 +105,7 @@ function Ordercomponent(props) {
               onClick={() => {
                 washChange();
               }}
-              alt="shirt"
+              alt="wash"
             />
           </div>
           <div class="col-lg-3">
@@ -109,11 +116,19 @@ function Ordercomponent(props) {
               onClick={() => {
                 pressChange();
               }}
-              alt="shirt"
+              alt="press"
             />
           </div>
           <div class="col-lg-3">
-            <img type="Boolean" name="fold" src={Fold} alt="shirt" />
+            <img
+              type="Boolean"
+              name="fold"
+              src={Fold}
+              onClick={() => {
+                foldChange();
+              }}
+              alt="fold"
+            />
           </div>
           <div class="col-lg-3">
             <img
@@ -123,7 +138,7 @@ function Ordercomponent(props) {
               onClick={() => {
                 packChange();
               }}
-              alt="shirt"
+              alt="pack"
             />
           </div>
         </div>
