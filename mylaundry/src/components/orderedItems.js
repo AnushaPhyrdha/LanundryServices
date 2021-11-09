@@ -52,9 +52,9 @@ function OrderedItems({
       <tr>
         <td>{order_id}</td>
         <td>{moment(createdAt).format("DD MMM YYYY,HH:mm")}</td>
-        <td>Heaven</td>
+        <td>Jp Nagar</td>
         <td>{address}</td>
-        <td>{phone}</td>
+        <td>+91 9988667788</td>
         <td>{total_quantity}</td>
         <td>{total_price}</td>
         <td>{status}</td>
@@ -91,7 +91,7 @@ function OrderedItems({
               </div>
               <div class="col-lg-4">
                 <h6>Phone</h6>
-                <p>+91 9999999999</p>
+                <p>+91 9988667788</p>
               </div>
             </div>
           </div>

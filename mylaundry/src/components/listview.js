@@ -42,7 +42,7 @@ function Listview() {
               <div class="col-lg-12">
                 <i
                   class="fa fa-home fontmain"
-                  onClick={() => history.push("/")}
+                  onClick={() => history.push("/homepage")}
                 ></i>
               </div>
               <div class="col-lg-12">
@@ -55,6 +55,12 @@ function Listview() {
                 <i
                   class="fa fa-bars fontmain1"
                   onClick={() => history.push("/listview")}
+                ></i>
+              </div>
+              <div class="col-lg-12">
+                <i
+                  class="fa fa-sign-out fontmain"
+                  onClick={() => history.push("/")}
                 ></i>
               </div>
             </div>
