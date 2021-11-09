@@ -28,11 +28,15 @@ function OrderedItems({
   }
 
   async function handleClickStatus() {
-    axios.put(
-      `http://localhost:5000/orders/${_id}`,
-      {},
-      { headers: { Authorization: `Bearer ${getToken()}` } }
-    );
+    axios
+      .put(
+        `http://localhost:5000/orders/${_id}`,
+        {},
+        { headers: { Authorization: `Bearer ${getToken()}` } }
+      )
+      .catch((e) => {
+        alert("unAuthorized user");
+      });
   }
 
   async function handleClick() {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { getToken } from "../Utils/AuthOperations";
 import Summaryfinal from "./summaryfinal";
@@ -8,7 +8,7 @@ function Summaryorder(props) {
   const history = useHistory();
 
   async function orderSuccessAlrt() {
-    alert("Your Order got Placed Successflully");
+    alert("Your Order got Placed Successfully");
   }
 
   function confirmlist() {
