@@ -81,6 +81,12 @@ function Orderlist() {
                   onClick={() => history.push("/listview")}
                 ></i>
               </div>
+              <div class="col-lg-12">
+                <i
+                  class="fa fa-sign-out fontmain"
+                  onClick={() => history.push("/")}
+                ></i>
+              </div>
             </div>
           </div>
           <div class="col-lg-11">
