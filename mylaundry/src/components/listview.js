@@ -5,7 +5,7 @@ import Footer from "./footer";
 import OrderedItems from "./orderedItems";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { getToken } from "../Utils/AuthOperations";
+import { clearToken, getToken } from "../Utils/AuthOperations";
 
 function Listview() {
   const history = useHistory();
@@ -32,6 +32,9 @@ function Listview() {
         //   setCount(orders.length);
         // }, 1000);
         console.log(orders);
+      })
+      .catch((e) => {
+        alert("unAuthorized user");
       });
   });
   return (
@@ -62,7 +65,10 @@ function Listview() {
               <div class="col-lg-12">
                 <i
                   class="fa fa-sign-out fontmain"
-                  onClick={() => history.push("/")}
+                  onClick={() => {
+                    history.push("/");
+                    clearToken();
+                  }}
                 ></i>
               </div>
             </div>

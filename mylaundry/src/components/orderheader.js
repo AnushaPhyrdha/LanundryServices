@@ -17,10 +17,13 @@ function Orderheader() {
     console.log("orderheader", getToken());
     axios
       .get("http://localhost:5000/get", {
-        headers: { Authorization: "Bearer " + getToken().toString() },
+        headers: { Authorization: "Bearer " + getToken() },
       })
       .then((response) => {
         setUser(response.data.data.get_user.name);
+      })
+      .catch((e) => {
+        alert("unAuthorized user");
       });
   });
   return (
