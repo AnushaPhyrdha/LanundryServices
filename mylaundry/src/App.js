@@ -8,6 +8,7 @@ import Createorder from "./components/createorder";
 import Orderlist from "./components/orderlist";
 import ListView from "./components/listview";
 import Summary from "./components/summary";
+import Homepage from "../src/components/homepage";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path="/orderlist">
           <Orderlist />
+        </Route>
+        <Route path="/homepage">
+          <Homepage />
         </Route>
         <Route path="/listview">
           <ListView />
