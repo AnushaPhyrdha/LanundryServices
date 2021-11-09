@@ -1,11 +1,16 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { getToken } from "../Utils/AuthOperations";
 import Summaryfinal from "./summaryfinal";
 
 function Summaryorder(props) {
   const history = useHistory();
+
+  async function orderSuccessAlrt() {
+    alert("Your Order got Placed Successflully");
+  }
+
   function confirmlist() {
     const data = [];
 
@@ -23,6 +28,7 @@ function Summaryorder(props) {
       { headers: { Authorization: `Bearer ${getToken()}` } }
     );
     console.log("Hello");
+    orderSuccessAlrt();
     history.push("/listview");
   }
 
@@ -70,6 +76,7 @@ function Summaryorder(props) {
           </div>
         </div>
       </div>
+
       <div class="btncon">
         <button class="btn btn-primary my-3 " onClick={confirmlist}>
           Confirm

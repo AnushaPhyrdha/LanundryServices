@@ -25,10 +25,12 @@ function Listview() {
         },
       })
       .then((response) => {
-        setTimeout(() => {
-          setOrders(response.data.data.orders);
-          setCount(orders.length);
-        }, 2000);
+        setOrders(response.data.data.orders);
+        setCount(orders.length);
+        // setTimeout(() => {
+        //   setOrders(response.data.data.orders);
+        //   setCount(orders.length);
+        // }, 1000);
         console.log(orders);
       });
   });

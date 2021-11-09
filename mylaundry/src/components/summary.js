@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 // import "./summary.css";
 import "./orderlist.css";
+import { useHistory } from "react-router-dom";
 
 function Summary() {
   const [show, setShow] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const history = useHistory();
+
+  async function handleShowSuccess() {
+    setSuccess(true);
+  }
+
   return (
     <>
       <div>
-        <h2>Ashutosh</h2>
         <button
           class="btn btn btn-primary proceed"
           onClick={() => setShow(true)}
@@ -116,9 +124,42 @@ function Summary() {
           <br />
           <br />
           <div className="confirm" id="button">
-            <button type="button" class="btn btn-primary">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onClick={() => handleShowSuccess}
+            >
               Confirm
             </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+
+      <Modal
+        show={success}
+        onHide={() => setSuccess(false)}
+        dialogClassName="modal-30w"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header>
+          <i class="fas fa-check-circle"></i>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="container">
+            <div class="row"></div>
+            <div className="cancel_button">
+              <p>
+                <b>Your Order is Successful</b>
+              </p>
+              <small>You can track the delicery in the orders section</small>
+              <button
+                type="button"
+                className="itemsproceed"
+                onClick={() => history.push("/listview")}
+              >
+                Go to Orders
+              </button>
+            </div>
           </div>
         </Modal.Body>
       </Modal>
